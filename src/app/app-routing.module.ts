@@ -7,11 +7,15 @@ import { WelcomeComponent } from './welcome/welcome.component';
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'welcome', component: WelcomeComponent },
-  { path: 'foro', component: ForoComponent }
+  { path: 'foro/:userName/:userImageUrl', component: ForoComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }
