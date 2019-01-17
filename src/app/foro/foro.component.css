@@ -1,0 +1,30 @@
+.button-question{
+    height: 62px;
+    width: 100px;
+    margin-left: 20px;
+    color: white;
+}
+
+img{
+    height: 30px;
+    width: 30px;
+}
+
+.question{
+    margin-left: 30px;
+}
+
+.reponse-first-level{
+    margin-left: 60px;
+}
+
+.reponse-second-level{
+    margin-left: 90px;
+    
+}
+
+.bootton-response{
+    margin-left: 10px;
+    height: 38px;
+    width: 70px;
+}

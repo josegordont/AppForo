@@ -1,3 +1,58 @@
-<p>
-  foro works!
-</p>
+<div class="col-12 center-block input-group">
+  <div class="p-5 col-md-2 col-sm-1 col-xs-0 "></div>
+  <div class="border border-light p-5 col-md-8 col-sm-10 col-xs-12 ">
+    <!-- Pregunta publicacion -->
+    <div class="input-group">
+      <textarea type="text" [(ngModel)]="question" class="form-control mb-4" placeholder="Write your question">
+            </textarea>
+      <!-- Boton publicar pregunta -->
+      <div class="text-center">
+        <button mdbBtn class="btn btn-warning button-question" (click)="postQuestion()">
+          <b>Send</b>
+        </button>
+      </div>
+    </div>
+    <div *ngFor="let question of questionList" class="question">
+      <img [src]="userImageUrl"> {{userName}}
+      <div>{{question.questionText}}</div>
+      <div>
+        <span class="oi oi-share" (click)="firstLevelResponse(question.questionId)"></span>
+      </div>
+      <!-- Nivel 1 de respuesta -->
+      <div *ngFor="let response of responseLevel1List" class="reponse-first-level">
+        <div *ngIf="question.questionId == response.questionId">
+          <img [src]="userImageUrl"> {{userName}}
+          <div>{{response.responseText}}</div>
+          <div>
+            <span class="oi oi-share" (click)="secondLevelResponse(response.responseId)"></span>
+          </div>
+          <!-- Nivel 2 de respuesta -->
+          <div *ngFor="let responseSecond of responseLevel2List" class="reponse-second-level">
+            <div *ngIf="response.responseId == responseSecond.fatherId">
+              <img [src]="userImageUrl"> {{userName}}
+              <div>{{responseSecond.responseText}}</div>
+            </div>
+          </div>
+          <!-- Input respuesta segundo nivel -->
+          <div attr.id="response{{response.responseId}}" [style.display]="'none'">
+            <div class="input-group">
+              <input attr.id="inputResponse{{response.responseId}}" class="form-control mb-4" type="text">
+              <button mdbBtn class="btn btn-info bootton-response" (click)="saveSecondLevelResponse(response.responseId)">
+                Enter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Input respuesta primer nivel -->
+      <div attr.id="responseQuestion{{question.questionId}}" [style.display]="'none'">
+        <div class="input-group">
+          <input attr.id="inputResponseQuestion{{question.questionId}}" class="form-control mb-4" type="text">
+          <button mdbBtn class="btn btn-success bootton-response" (click)="saveFirstLevelResponse(question.questionId)">
+            Enter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
