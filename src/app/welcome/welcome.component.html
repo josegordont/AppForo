@@ -1,3 +1,14 @@
-<p>
-  welcome works!
-</p>
+<div class="border border-light p-5">
+  <!-- User name -->
+  <label>What's your name?</label>
+  <input type="text" [(ngModel)]="userName" class="form-control mb-4" placeholder="Write your name">
+  <!-- User image -->
+  <label>Paste an image url for your avatar</label>
+  <input type="text" [(ngModel)]="userImageUrl" class="form-control mb-4" placeholder="example : https://png.icons8.com/search/96">
+  <!-- Sign in button -->
+  <div class="text-center">
+    <button mdbBtn color="info" block="true" class="my-4" (click)="entryForum()">
+      Enter
+    </button>
+  </div>
+</div>
