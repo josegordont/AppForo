@@ -24,14 +24,16 @@ export class WelcomeComponent implements OnInit {
 
   entryForum(){
     // Valor por defecto userName
-    if(this.userName.trim() == ''){
+    if(this.userName.trim() == '' || this.userName.trim().length < 5){
       this.userName = 'Guest';
     }
     // Valor por defecto userImageUrl
-    if(this.userImageUrl.trim() == ''){
+    if(this.userImageUrl.trim() == '' || this.userImageUrl.trim().length < 5){
         this.userImageUrl = 'https://png.icons8.com/search/96';
     }
-    this.router.navigateByUrl('/foro/' + btoa(this.userName).replace('=','<') + '/' + btoa(this.userImageUrl).replace('=','<'));
+    
+      this.router.navigateByUrl('/foro/' + btoa(this.userName).replace('=','<') + '/' + btoa(this.userImageUrl).replace('=','<'));
+
   }
 
 }
